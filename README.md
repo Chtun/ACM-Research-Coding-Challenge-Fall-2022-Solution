@@ -5,10 +5,17 @@ Created for ACM Research Coding Challenge
 
 _Project Questions_
 1. Create algorithm for giving car models a certain ranking based on average review score and # of reviews.
+
 -> Assess ranking based on ratings and # of reviews for both buyer and seller categories. Use formula 1 + 4 (1/ 1 + (k)^-ax) to calculate rating reliability, then calculate rating based on average rating + (rating reliability - 50) / 50 separately for buyer and for seller ratings.
+
 -> Compare Buyer rankings to Sellers rankings to better estimate rankings at low # of Buyer reviews.
+
 -> Note that we are not given a number of cars sold, which makes it difficult to accurately consider the usefulness of # of reviews.
+
+
 2. Compare buyer average rankings to sellers rankings.
+
+
 
 _Data Set Challenges_
 
