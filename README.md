@@ -10,7 +10,7 @@ _Project Questions_
 
 -> Compare Buyer rankings to Sellers rankings to better estimate rankings at low # of Buyer reviews.
 
--> Note that we are not given a number of cars sold, which makes it difficult to accurately consider the usefulness of # of reviews.
+-> Note that we are not given a number of cars sold, which makes it more difficult to accurately consider the usefulness of # of reviews.
 
 
 2. Compare buyer average rankings to sellers rankings.
