@@ -2,6 +2,7 @@
 Created for ACM Research Coding Challenge
 
 *To DO*
+
 _Project Questions_
 1. Create algorithm for giving car models a certain ranking based on average review score and # of reviews.
 -> Split data between Used and New.
