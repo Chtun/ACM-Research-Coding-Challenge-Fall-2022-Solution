@@ -107,7 +107,7 @@ def FindBestRankings(cars_info):
         for j in range(1, len(car_brand)):
             if cars_info[i][1] == car_brand[j][0]:
                 isInCarBrand = True
-            
+        
         if isInCarBrand == False:
             car_brand.append([cars_info[i][1], 0, 0])
             index = (FindIndexIn2D(car_brand, cars_info[i][1]))[0]
@@ -129,12 +129,66 @@ def FindBestRankings(cars_info):
 
     return best_rankings
 
+# Find the best ranked cars by brand and the top 10 cars to buy based on final rankings
+def FindDealerRankings(cars, cars_info):
+    
+    dealers = [['Dealer', 'Calculate Score', 'Number of Distinct Cars']]
+    dealer_rankings = np.array([['Dealer', 'Average Final Rankings', 'Number of Different Cars Sold']])
+    
+    # Iterate through cars and add new dealers found to 'dealers'. Then, add number of reviews and add up total review scores for all cars in a dealership
+    for i in range(1, len(cars)):
+        isInDealers = False
+        
+        # Search through dealers to see if the current dealer in the cars table has been found
+        for j in range(1, len(dealers)):
+            if cars[i][8] == dealers[j][0]:
+                isInDealers = True
+        
+        
+        if isInDealers == False:
+            dealers.append([cars[i][8], 0, 0])
+            index = (FindIndexIn2D(dealers, cars[i][8]))[0]
+            car_model_index = (FindIndexForArrayIn2D(cars_info, [cars[i][0], cars[i][1], cars[i][2]], 3))[0]
+            
+            dealers[index][1] = (cars_info[car_model_index][15]) * (int(cars[i][6]) + int(cars[i][10]))
+            dealers[index][2] = (int(cars[i][6]) + int(cars[i][10]))
+        else:
+            index = (FindIndexIn2D(dealers, cars[i][8]))[0]
+            car_model_index = (FindIndexForArrayIn2D(cars_info, [cars[i][0], cars[i][1], cars[i][2]], 3))[0]
+            dealers[index][1] += int(cars_info[car_model_index][15] * (int(cars[i][6]) + int(cars[i][10])))
+            dealers[index][2] += (int(cars[i][6]) + int(cars[i][10]))
+
+    print("Finished finding all dealers.")
+    # Calculate average final ranking based on -> summation of total review scores / number of reviews
+    for i in range(1, len(dealers)):
+        dealers[i][1] = dealers[i][1] / dealers[i][2]
+        dealers[i][1] = float("{0:.2f}".format(dealers[i][1]))
+        print(dealers[i][1])
+        print(dealers[i][2])
+        dealer_rankings = np.vstack([dealer_rankings, [dealers[i][0], dealers[i][1], dealers[i][2]]])
+    
+    # Sort 'best_rankings' array by top car brand values
+    dealer_rankings = dealer_rankings[dealer_rankings[:, 1].argsort()[::-1][:len(dealer_rankings)]]
+
+    return dealer_rankings
+
 # Find index of element in v
 def FindIndexIn2D(myList, v):
     for i, x in enumerate(myList):
         if v in x:
             return [i, x.index(v)]
 
+# Find index of array of elements  in v
+def FindIndexForArrayIn2D(myList, v, size):
+    for i in range(0, len(myList)):
+        for j in range(0, len(myList[0]) - size):
+            correctMatch = True
+            for k in range(0, size):
+                if (myList[i][j + k] != v[k]):
+                    correctMatch = False
+
+            if correctMatch:
+                return [i, j]
 
 def main():
 
@@ -162,10 +216,13 @@ def main():
     best_rankings = FindBestRankings(cars_info)
     print("Best rankings formatted.")
 
+    dealer_rankings = FindDealerRankings(cars, cars_info)
+
     # Create output .csv file for 'cars_price'
     OutputCSV(cars_price, "cars_price")    
     OutputCSV(cars_info, "cars_info")
     OutputCSV(best_rankings, "best_rankings")
+    OutputCSV(dealer_rankings, "dealer_rankings")
     
 
 
