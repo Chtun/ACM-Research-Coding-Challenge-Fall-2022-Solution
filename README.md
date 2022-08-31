@@ -25,3 +25,9 @@ _Data Set and Coding Challenges_
 1. Remove the symbols from the 'price' variable and convert it into an integer. Also remove any rows that have a value 'not priced' OR you can try to impute an appropriate price value based on the make and model of the car.
 
 2. Average buyer ratings and seller ratings, and tally total number of buyer reviews and total number of seller reviews across each of the cars based on their makes, models, and years {year, make, model, used/new}.
+
+
+_Files_
+
+Outside of the code, I slightly modified the 'cars_raw.csv' file because I needed to get rid of commas that appeared in the 'dealer name' column, which I replaced with semicolons. The rest of the csv files were generated from the python script.
+
