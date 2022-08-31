@@ -35,6 +35,9 @@ _Files_
 Outside of the code, I slightly modified the 'cars_raw.csv' file because I needed to get rid of commas that appeared in the 'dealer name' column, which I replaced with semicolons. The rest of the csv files were generated from the python script.
 
 cars_price.csv: CSV file of the average price of cars by year, make, model, and new/used
+
 cars_info.csv: CSV file of the average buyer rating, number of buyer reviews, average seller rating, number of seller reviews, adjusted buyer ranking, adjusted sellers ranking, buyer rating reliability, seller rating reliability, and final ranking score of each car by year, make, and model.
+
 best_rankings.csv: CSV file of ranking of best car brands by average final ranking across all their car models and years.
+
 dealer_rankings.csv: CSV file of ranking of best dealerships by average final ranking across all their sales of car by make, model, and year.
