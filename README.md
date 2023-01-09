@@ -1,5 +1,4 @@
 # Car Rating and Ranking Data Analysis
-Created for ACM Research Coding Challenge
 
 In this project, I sought to calculate a ranking score (from 0 to 5) for each car by their make, model, and year that accounts for both the average review scores and the number of reviews. This is done by subtracting up to a single point from the average review scores depending on how low the rating reliability was (more than 100 ratings were classified as 100% reliable, and values between 1 and 100 reviews were classified as values between 0 and 100% reliable based on a sigmoid function). Then, I used those ranking scores to determine which of the car brands had the highest and most reliable reviews, which is stored in the 'best_rankings.csv' file. Finally, I used those ranking scores to determine which of the dealers sell the best cars.
 
@@ -41,3 +40,6 @@ cars_info.csv: CSV file of the average buyer rating, number of buyer reviews, av
 best_rankings.csv: CSV file of ranking of best car brands by average final ranking across all their car models and years.
 
 dealer_rankings.csv: CSV file of ranking of best dealerships by average final ranking across all their sales of car by make, model, and year.
+
+
+Created for ACM Research
